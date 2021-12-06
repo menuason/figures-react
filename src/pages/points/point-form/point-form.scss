@@ -1,0 +1,19 @@
+.PageContent {
+  flex: 1;
+  display: flex;
+  gap: 24px;
+  padding: 24px;
+  justify-content: space-between;
+}
+
+.CreatePointFormComponent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap:16px;
+
+  .ActionsContainer {
+    display: flex;
+    gap: 24px;
+  }
+}

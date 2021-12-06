@@ -1,4 +1,5 @@
-import { Button } from '../components/Button';
+import './nav-bar.scss';
+import { Button } from '../button/button';
 
 export const NavBar = () => {
   const arr = ['Points', 'Circles', 'Rectangles', 'Triangles'];

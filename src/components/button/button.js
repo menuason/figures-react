@@ -1,9 +1,11 @@
 // variant: text(default), contained
 // size: big, normal(default), small
+import './button.scss';
 
 const variantClassNames = {
   text: 'Text',
   contained: 'Contained',
+  outlined: 'Outlined',
 };
 
 const sizeClassNames = {

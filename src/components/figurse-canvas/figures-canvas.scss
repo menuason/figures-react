@@ -1,0 +1,13 @@
+.FiguresCanvas {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: white;
+
+  .CanvasForm {
+    width: 100%;
+    height: 477px;
+    background-color: white;
+    border-radius: 4px;
+  }
+}

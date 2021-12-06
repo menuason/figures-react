@@ -1,8 +1,6 @@
-.AppRoot {
-  height: 100%;
-  background: #2b2a50;
+.CanvasContainer {
   display: flex;
   flex-direction: column;
   gap: 16px;
+  flex: 1;
 }
-
