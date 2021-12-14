@@ -21,7 +21,7 @@ class App extends Component {
       <div className="AppRoot">
         <Header />
         <Breadcrumbs onCreatePointCLicked={handleShowForm} showForm={this.state.showForm}/>
-        <PointPage showForm={this.state.showForm} hideForm = {handleHideForm}/>
+        <PointPage showForm={this.state.showForm} hideForm={handleHideForm}/>
       </div>
     );
   }

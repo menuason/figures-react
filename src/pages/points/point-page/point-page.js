@@ -3,6 +3,7 @@ import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
 import { Component } from 'react';
 import { PointForm } from '../point-form/point-form';
 import { PointList } from '../point-list/point-list';
+import { genId } from '../../../utils/gen-id';
 
 export class PointPage extends Component {
   state = {
@@ -11,8 +12,11 @@ export class PointPage extends Component {
 
   render() {
     const handleAddItem = (point) => {
-      localStorage.setItem('points', JSON.stringify([...this.state.points, point]));
-      this.setState({ points: [...this.state.points, point] });
+      const pointWithId = { ...point, id: genId() };
+      const newPoints = [...this.state.points, pointWithId];
+
+      localStorage.setItem('points', JSON.stringify(newPoints));
+      this.setState({ points: newPoints });
       this.props.hideForm();
     };
 
@@ -24,7 +28,6 @@ export class PointPage extends Component {
       const points = this.state.points.filter((point) => point !== selectedPoint);
       localStorage.setItem('points', JSON.stringify(points));
       this.setState({ points });
-
     };
 
     return (
@@ -33,6 +36,7 @@ export class PointPage extends Component {
 
         <div className="CanvasContainer">
           <FiguresCanvas />
+
           {
             this.props.showForm && <PointForm onAddItem={handleAddItem} onHideForm={handleHideForm} />
           }

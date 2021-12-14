@@ -7,7 +7,7 @@ export const NavBar = () => {
   return (
     <div className="NavBarTexts">
       {
-        arr.map((item) => <Button type="button" className="Button">{item}</Button>)
+        arr.map((item, ind) => <Button key={ind}>{item}</Button>)
       }
     </div>
   );

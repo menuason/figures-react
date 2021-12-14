@@ -1,4 +1,4 @@
-.Card {
+.PointListItem {
   background: #252049;
   min-width: 320px;
   border-radius: 10px;
@@ -19,7 +19,7 @@
   border: 2px solid #2ba6a7;
 }
 
-.cancelIcon{
+.deleteIcon {
   position: absolute;
   cursor: pointer;
   top: 0;
