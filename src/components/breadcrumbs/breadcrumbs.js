@@ -1,5 +1,5 @@
 import './breadcrambs.scss';
-import { Button } from '../button/button';
+import { Button } from '../button';
 
 export const Breadcrumbs = ({ onCreatePointCLicked, showForm }) => {
 

@@ -1,7 +1,8 @@
 import './point-list-item.scss';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faTimes} from  '@fortawesome/free-solid-svg-icons'
-export const PointListItem = ({ point,onDeletePoint }) => {
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+
+export const PointListItem = ({ point, onDeletePoint }) => {
   return (
     <div className="PointListItem">
       <div className="Avatar">{point.name}</div>

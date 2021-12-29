@@ -1,30 +1,28 @@
 import './App.scss';
-import { Component } from 'react';
-import { Header } from './components/header/header';
-import { Breadcrumbs } from './components/breadcrumbs/breadcrumbs';
-import { PointPage } from './pages/points/point-page/point-page';
+import { useState } from 'react';
+import { Header } from './components/header';
+import { Breadcrumbs } from './components/breadcrumbs';
+import { PointPage } from './pages/points/point-page';
 
-class App extends Component {
-  state = {
-    showForm: false
-  }
-  render() {
-    const handleShowForm =(ev) =>{
-      this.setState({showForm: true})
-    }
+export const App = () => {
 
-    const handleHideForm = () => {
-      this.setState({showForm: false})
-    }
+  const [showForm, setShowForm] = useState(false);
 
-    return (
-      <div className="AppRoot">
-        <Header />
-        <Breadcrumbs onCreatePointCLicked={handleShowForm} showForm={this.state.showForm}/>
-        <PointPage showForm={this.state.showForm} hideForm={handleHideForm}/>
-      </div>
-    );
-  }
-}
+  const handleShowForm = () => {
+    setShowForm(true);
+  };
+
+  const handleHideForm = () => {
+    setShowForm(false);
+  };
+
+  return (
+    <div className="AppRoot">
+      <Header />
+      <Breadcrumbs onCreatePointCLicked={handleShowForm} showForm={showForm} />
+      <PointPage showForm={showForm} hideForm={handleHideForm} />
+    </div>
+  );
+};
 
 export default App;

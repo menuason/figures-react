@@ -1,5 +1,5 @@
 import './point-list.scss';
-import { PointListItem } from './point-list-item/point-list-item';
+import { PointListItem } from './point-list-item';
 
 export const PointList = ({ points, onDeletePoint }) => {
   return (

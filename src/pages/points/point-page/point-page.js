@@ -1,47 +1,45 @@
 import './point-page.scss';
 import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
-import { Component } from 'react';
+import { useState } from 'react';
 import { PointForm } from '../point-form/point-form';
-import { PointList } from '../point-list/point-list';
+import { PointList } from '../point-list';
 import { genId } from '../../../utils/gen-id';
 
-export class PointPage extends Component {
-  state = {
-    points: JSON.parse(localStorage.getItem('points')) ?? [],
+export const PointPage = ({ hideForm, showForm }) => {
+  const [points, setPoints] = useState(() => {
+    return JSON.parse(localStorage.getItem('points')) ?? [];
+  });
+
+  const handleAddItem = (point) => {
+    const pointWithId = { ...point, id: genId() };
+    const newPoints = [...points, pointWithId];
+
+    localStorage.setItem('points', JSON.stringify(newPoints));
+    setPoints(newPoints);
+    hideForm();
   };
 
-  render() {
-    const handleAddItem = (point) => {
-      const pointWithId = { ...point, id: genId() };
-      const newPoints = [...this.state.points, pointWithId];
+  const handleHideForm = () => {
+    hideForm();
+  };
 
-      localStorage.setItem('points', JSON.stringify(newPoints));
-      this.setState({ points: newPoints });
-      this.props.hideForm();
-    };
+  const handleDeletePoint = (selectedPoint) => {
+    const newPoints = points.filter((point) => point !== selectedPoint);
+    localStorage.setItem('points', JSON.stringify(newPoints));
+    setPoints(newPoints);
+  };
 
-    const handleHideForm = () => {
-      this.props.hideForm();
-    };
+  return (
+    <div className="PageContent">
+      <PointList points={points} onDeletePoint={handleDeletePoint} />
 
-    const handleDeletePoint = (selectedPoint) => {
-      const points = this.state.points.filter((point) => point !== selectedPoint);
-      localStorage.setItem('points', JSON.stringify(points));
-      this.setState({ points });
-    };
+      <div className="CanvasContainer">
+        <FiguresCanvas />
 
-    return (
-      <div className="PageContent">
-        <PointList points={this.state.points} onDeletePoint={handleDeletePoint} />
-
-        <div className="CanvasContainer">
-          <FiguresCanvas />
-
-          {
-            this.props.showForm && <PointForm onAddItem={handleAddItem} onHideForm={handleHideForm} />
-          }
-        </div>
+        {
+          showForm && <PointForm onAddItem={handleAddItem} onHideForm={handleHideForm} />
+        }
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
