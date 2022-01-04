@@ -2,6 +2,8 @@ import './point-form.scss';
 import { Input } from '../../../components/input';
 import { Button } from '../../../components/button';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { pointsSlice } from '../../../store/slices/slices';
 
 const DEFAULT_POINT_VALUE = {
   x: '',
@@ -9,7 +11,8 @@ const DEFAULT_POINT_VALUE = {
   name: '',
 };
 
-export const PointForm = ({ onAddItem, onHideForm }) => {
+export const PointForm = () => {
+  const dispatch = useDispatch();
   const [draftPoint, setDraftPoint] = useState(DEFAULT_POINT_VALUE);
 
   const handleItem = (ev) => {
@@ -19,11 +22,16 @@ export const PointForm = ({ onAddItem, onHideForm }) => {
   };
 
   const handleSave = () => {
-    onAddItem(draftPoint);
+    handleCreate(draftPoint);
+    // onAddItem(draftPoint);
   };
+  //
+  // const cancelItems = () => {
+  //   onHideForm();
+  // };
 
-  const cancelItems = () => {
-    onHideForm();
+  const handleCreate = (point) => {
+    dispatch(pointsSlice.actions.createPoint( {point} ));
   };
 
   return (
@@ -35,11 +43,11 @@ export const PointForm = ({ onAddItem, onHideForm }) => {
       </div>
 
       <div className="ActionsContainer">
-        <Button type="button" onClick={cancelItems}>CANCEL</Button>
+        <Button type="button">CANCEL</Button>
         <Button
           variant="outlined"
           size="big"
-          onClick={handleSave}
+          onClick={() => handleSave()}
           disabled={!draftPoint.x || !draftPoint.y || !draftPoint.name}
         >
           SAVE

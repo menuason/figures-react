@@ -1,7 +1,7 @@
 import './point-list.scss';
 import { PointListItem } from './point-list-item';
 
-export const PointList = ({ points, onDeletePoint }) => {
+export const PointList = ({ points }) => {
   return (
     <div className="PointList">
       {
@@ -10,7 +10,6 @@ export const PointList = ({ points, onDeletePoint }) => {
             <PointListItem
               key={point.id}
               point={point}
-              onDeletePoint={onDeletePoint}
             />
           ))
         ) : (

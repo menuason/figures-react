@@ -5,7 +5,6 @@ import { Breadcrumbs } from './components/breadcrumbs';
 import { PointPage } from './pages/points/point-page';
 
 export const App = () => {
-
   const [showForm, setShowForm] = useState(false);
 
   const handleShowForm = () => {
