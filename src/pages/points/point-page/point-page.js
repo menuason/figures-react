@@ -1,11 +1,13 @@
-import './point-page.scss';
-import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
-import { PointForm } from '../point-form/point-form';
-import { PointList } from '../point-list';
-import { pointsSlice } from '../../../store/slices/slices';
 import { useSelector } from 'react-redux';
+import { Outlet } from 'react-router-dom';
 
-export const PointPage = ({ hideForm, showForm }) => {
+import { pointsSlice } from '../../../store/slices';
+import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
+import { PointList } from '../point-list';
+
+import './point-page.scss';
+
+export const PointPage = () => {
   const points = useSelector(pointsSlice.selectors.selectAll);
 
 
@@ -21,10 +23,7 @@ export const PointPage = ({ hideForm, showForm }) => {
 
       <div className="CanvasContainer">
         <FiguresCanvas />
-
-        {
-          showForm && <PointForm />
-        }
+        <Outlet />
       </div>
     </div>
   );

@@ -13,7 +13,7 @@ const slice = createSlice({
   initialState: getInitialState(),
   reducers: {
     createPoint: (state, { payload }) => {
-     state.allPoints.push({ id: genUid(), ...payload.point});
+      state.allPoints.push({ id: genUid(), ...payload.point });
     },
     deletePoint: (state, { payload: id }) => {
       state.allPoints = state.allPoints.filter((point) => point.id !== id);
@@ -23,7 +23,7 @@ const slice = createSlice({
 
 const selectors = {
   selectAll: (state) => state.points.allPoints,
-}
+};
 
 export const pointsSlice = {
   ...slice,

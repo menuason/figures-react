@@ -1,1 +1,1 @@
-export * from './point-page'
+export * from './point-page';

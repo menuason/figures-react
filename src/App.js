@@ -1,27 +1,28 @@
-import './App.scss';
-import { useState } from 'react';
-import { Header } from './components/header';
-import { Breadcrumbs } from './components/breadcrumbs';
+import { Component } from 'react';
+import { Route, Routes } from 'react-router-dom';
+
+import { PageShell } from './components/page-shell';
 import { PointPage } from './pages/points/point-page';
+import { PointForm } from './pages/points/point-form';
 
-export const App = () => {
-  const [showForm, setShowForm] = useState(false);
+import './App.scss';
 
-  const handleShowForm = () => {
-    setShowForm(true);
-  };
+export class App extends Component {
+  render() {
 
-  const handleHideForm = () => {
-    setShowForm(false);
-  };
+    return (
+      <div className="AppRoot">
 
-  return (
-    <div className="AppRoot">
-      <Header />
-      <Breadcrumbs onCreatePointCLicked={handleShowForm} showForm={showForm} />
-      <PointPage showForm={showForm} hideForm={handleHideForm} />
-    </div>
-  );
-};
+        <Routes>
+          <Route path="/" element={<PageShell />}>
+            <Route path="points" element={<PointPage />}>
+              <Route path="create" element={<PointForm />} />
+            </Route>
+          </Route>
+        </Routes>
+      </div>
+    );
+  }
+}
 
 export default App;

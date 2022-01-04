@@ -3,7 +3,8 @@ import { Input } from '../../../components/input';
 import { Button } from '../../../components/button';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { pointsSlice } from '../../../store/slices/slices';
+import { pointsSlice } from '../../../store/slices';
+import { Link } from 'react-router-dom';
 
 const DEFAULT_POINT_VALUE = {
   x: '',
@@ -23,6 +24,8 @@ export const PointForm = () => {
 
   const handleSave = () => {
     handleCreate(draftPoint);
+    setDraftPoint(DEFAULT_POINT_VALUE)
+
     // onAddItem(draftPoint);
   };
   //
@@ -31,7 +34,7 @@ export const PointForm = () => {
   // };
 
   const handleCreate = (point) => {
-    dispatch(pointsSlice.actions.createPoint( {point} ));
+    dispatch(pointsSlice.actions.createPoint({ point }));
   };
 
   return (
@@ -43,7 +46,7 @@ export const PointForm = () => {
       </div>
 
       <div className="ActionsContainer">
-        <Button type="button">CANCEL</Button>
+        <Link to="..">CANCEL</Link>
         <Button
           variant="outlined"
           size="big"

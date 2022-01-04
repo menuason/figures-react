@@ -1,1 +1,1 @@
-export * from './point-list'
+export * from './point-list';
