@@ -1,5 +1,5 @@
 import './nav-bar.scss';
-import { Button } from '../button';
+import { Link } from 'react-router-dom';
 
 export const NavBar = () => {
   const arr = ['Points', 'Circles', 'Rectangles', 'Triangles'];
@@ -7,7 +7,7 @@ export const NavBar = () => {
   return (
     <div className="NavBarTexts">
       {
-        arr.map((item, ind) => <Button key={ind}>{item}</Button>)
+        arr.map((item, ind) => <Link key={ind} to={item.toLowerCase()}>{item}</Link>)
       }
     </div>
   );

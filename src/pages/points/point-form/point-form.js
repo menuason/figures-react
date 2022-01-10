@@ -24,7 +24,7 @@ export const PointForm = () => {
 
   const handleSave = () => {
     handleCreate(draftPoint);
-    setDraftPoint(DEFAULT_POINT_VALUE)
+    setDraftPoint(DEFAULT_POINT_VALUE);
 
     // onAddItem(draftPoint);
   };
@@ -32,7 +32,6 @@ export const PointForm = () => {
   // const cancelItems = () => {
   //   onHideForm();
   // };
-
   const handleCreate = (point) => {
     dispatch(pointsSlice.actions.createPoint({ point }));
   };

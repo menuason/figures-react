@@ -6,6 +6,8 @@ import { PointPage } from './pages/points/point-page';
 import { PointForm } from './pages/points/point-form';
 
 import './App.scss';
+import { CirclePage } from './pages/circles/circle-page';
+import { CircleForm } from './pages/circles/circle-form/circles-form';
 
 export class App extends Component {
   render() {
@@ -17,6 +19,9 @@ export class App extends Component {
           <Route path="/" element={<PageShell />}>
             <Route path="points" element={<PointPage />}>
               <Route path="create" element={<PointForm />} />
+            </Route>
+            <Route path="circles" element={<CirclePage />}>
+              <Route path="create" element={<CircleForm />} />
             </Route>
           </Route>
         </Routes>

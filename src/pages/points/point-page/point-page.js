@@ -6,10 +6,10 @@ import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
 import { PointList } from '../point-list';
 
 import './point-page.scss';
+import { Breadcrumbs } from '../../../components/breadcrumbs';
 
 export const PointPage = () => {
   const points = useSelector(pointsSlice.selectors.selectAll);
-
 
   const handleDeletePoint = (selectedPoint) => {
     const newPoints = points.filter((point) => point !== selectedPoint);
@@ -18,13 +18,18 @@ export const PointPage = () => {
   };
 
   return (
-    <div className="PageContent">
-      <PointList points={points} onDeletePoint={handleDeletePoint} />
+    <>
+      <Breadcrumbs label="Point" path="/points/create" />
+      <div className="PageContent">
+        <PointList points={points} onDeletePoint={handleDeletePoint} />
 
-      <div className="CanvasContainer">
-        <FiguresCanvas />
-        <Outlet />
+        <div className="CanvasContainer">
+          <FiguresCanvas />
+          <Outlet />
+        </div>
       </div>
-    </div>
+    </>
   );
 };
+
+

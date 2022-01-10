@@ -26,6 +26,6 @@ const selectors = {
 };
 
 export const pointsSlice = {
-  ...slice,
   selectors,
+  ...slice,
 };
