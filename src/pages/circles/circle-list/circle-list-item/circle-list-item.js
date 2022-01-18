@@ -11,10 +11,11 @@ export const CircleListItem = ({ circle, onDeleteCircle }) => {
     onDeleteCircle(circle.id)
     dispatch(circlesSlice.actions.deleteCircle(circle.id));
   };
+
   return (
     <div className="CircleListItem">
       <div className="Avatar"> O</div>
-      <span>coordinate x: {circle.x} y: {circle.y}</span>
+      <span>coordinate x: {circle.point.x} y: {circle.point.y}</span>
       <span>radius: {circle.radius}</span>
       <div className="deleteIcon">
         <FontAwesomeIcon icon={faTimes} onClick={() => handleDeleteCircle()} />

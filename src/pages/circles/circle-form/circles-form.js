@@ -1,19 +1,23 @@
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { MenuItem, TextField } from '@mui/material';
+
+import './circles-form.scss';
 import { Input } from '../../../components/input';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/button';
-import { circlesSlice } from '../../../store/slices';
-import { useDispatch } from 'react-redux';
+import { circlesSlice, pointsSlice } from '../../../store/slices';
 
 const DEFAULT_CIRCLES_VALUE = {
-  x: '',
-  y: '',
+  point: null,
+  pointId: '',
   radius: '',
 };
 
 export const CircleForm = () => {
   const dispatch = useDispatch();
   const [draftCircle, setDraftCircle] = useState(DEFAULT_CIRCLES_VALUE);
+  const points = useSelector(pointsSlice.selectors.selectAll);
 
   const handleItem = (ev) => {
     // setDraftPoint(ev.target.value);
@@ -27,15 +31,41 @@ export const CircleForm = () => {
   };
 
   const handleCreate = (circle) => {
+    const point = points.find((point) => point.id === circle.pointId);
+    circle.point = point;
     dispatch(circlesSlice.actions.createCircle({ circle }));
   };
 
+  const handleSelect = (ev) => {
+    console.log(ev.target.value)
+    setDraftCircle({ ...draftCircle, pointId: ev.target.value });
+  };
+
   return (
-    <div className="CreatePointFormComponent">
+    <div className="CreateCircleFormComponent">
       <div className="InputContainer">
-        <Input label="x axis" name="x" value={draftCircle.x} onChange={handleItem} />
-        <Input label="y axis" name="y" value={draftCircle.y} onChange={handleItem} />
-        <Input label="radius" name="radius" value={draftCircle.radius} onChange={handleItem} />
+        <div className="SelectCircle">
+          <div className="PointListSelect">
+            <TextField
+              className="CheckPointsForCenter"
+              label="Center"
+              value={draftCircle.pointId}
+              select
+              onChange={handleSelect}
+            >
+              {
+                points.map((point) => (
+                  <MenuItem
+                    key={point.id}
+                    value={point.id}>
+                    coordinate x: {point.x} y: {point.y}
+                  </MenuItem>
+                ))
+              }
+            </TextField>
+          </div>
+          <Input label="radius" name="radius" value={draftCircle.radius} onChange={handleItem} />
+        </div>
       </div>
       <div className="ActionsContainer">
         <Link to="..">CANCEL</Link>
@@ -43,7 +73,7 @@ export const CircleForm = () => {
           variant="outlined"
           size="big"
           onClick={() => handleSave()}
-          disabled={!draftCircle.x || !draftCircle.y || !draftCircle.radius}
+          disabled={!draftCircle.pointId || !draftCircle.radius}
         >
           SAVE
         </Button>

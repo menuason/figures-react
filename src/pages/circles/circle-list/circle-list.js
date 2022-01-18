@@ -14,7 +14,7 @@ export const CircleList = ({ circles, onDeleteCircle }) => {
             />
           ))
         ) : (
-          <div className="Card">No points yet</div>
+          <div className="Card">No circles yet</div>
         )
       }
     </div>

@@ -1,0 +1,17 @@
+.RectangleListItem {
+  background: #252049;
+  min-width: 320px;
+  border-radius: 10px;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  position: relative;
+}
+.deleteIcon {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  right: 0;
+  padding: 8px;
+}
