@@ -10,6 +10,8 @@ import { CirclePage } from './pages/circles/circle-page';
 import { CircleForm } from './pages/circles/circle-form/circles-form';
 import { RectangleForm } from './pages/rectangles/rectangles-form';
 import { RectanglePage } from './pages/rectangles/rectangle-page';
+import { TrianglePage } from './pages/triangle/treangle-page';
+import { TriangleForm } from './pages/triangle/triangle-form/triangle-form';
 
 export class App extends Component {
   render() {
@@ -27,6 +29,9 @@ export class App extends Component {
             </Route>
             <Route path="rectangles" element={<RectanglePage />}>
               <Route path="create" element={<RectangleForm />} />
+            </Route>
+            <Route path="triangles" element={<TrianglePage />}>
+              <Route path="create" element={<TriangleForm />} />
             </Route>
           </Route>
         </Routes>

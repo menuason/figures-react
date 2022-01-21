@@ -1,4 +1,4 @@
-import './figures-canvas.scss'
+import './figures-canvas.modules.scss'
 export const FiguresCanvas = () => {
   return (
     <div className="FiguresCanvas">

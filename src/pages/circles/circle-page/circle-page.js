@@ -1,10 +1,10 @@
 import { useSelector } from 'react-redux';
 import { circlesSlice } from '../../../store/slices/';
-import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
 import { Outlet } from 'react-router-dom';
 import { CircleList } from '../circle-list';
-import './circle-page.scss'
 import { Breadcrumbs } from '../../../components/breadcrumbs';
+import * as classes from './circle-page.modules.scss';
+import PatchStyles from 'patch-styles';
 
 export const CirclePage = () => {
   const circles = useSelector(circlesSlice.selectors.selectAll);
@@ -14,16 +14,16 @@ export const CirclePage = () => {
     localStorage.setItem('circles', JSON.stringify(newCircles));
   };
   return (
-    <>
+    <PatchStyles classNames={classes}>
       <Breadcrumbs label="Circle" path="/circles/create" />
-    <div className="CircleContent">
-      <CircleList circles={circles} onDeleteCircle={handleDeleteCircle} />
+      <div className="CircleContent">
+        <CircleList circles={circles} onDeleteCircle={handleDeleteCircle} />
 
-      <div className="CanvasContainer">
-        <FiguresCanvas />
-        <Outlet />
+        <div className="CanvasContainer">
+          {/*  <FiguresCanvas />*/}
+          <Outlet />
+        </div>
       </div>
-    </div>
-    </>
+    </PatchStyles>
   );
 };

@@ -1,5 +1,5 @@
 import { ReactComponent as LogoSvg } from '../../assets/images/logo.svg';
-import './logo.scss';
+import './logo.modules.scss';
 
 export const Logo = () => {
   return (

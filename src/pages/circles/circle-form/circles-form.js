@@ -2,11 +2,12 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MenuItem, TextField } from '@mui/material';
 
-import './circles-form.scss';
+import * as classes from './circles-form.modules.scss';
 import { Input } from '../../../components/input';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/button';
 import { circlesSlice, pointsSlice } from '../../../store/slices';
+import PatchStyles from 'patch-styles';
 
 const DEFAULT_CIRCLES_VALUE = {
   point: null,
@@ -37,47 +38,49 @@ export const CircleForm = () => {
   };
 
   const handleSelect = (ev) => {
-    console.log(ev.target.value)
+    console.log(ev.target.value);
     setDraftCircle({ ...draftCircle, pointId: ev.target.value });
   };
 
   return (
-    <div className="CreateCircleFormComponent">
-      <div className="InputContainer">
-        <div className="SelectCircle">
-          <div className="PointListSelect">
-            <TextField
-              className="CheckPointsForCenter"
-              label="Center"
-              value={draftCircle.pointId}
-              select
-              onChange={handleSelect}
-            >
-              {
-                points.map((point) => (
-                  <MenuItem
-                    key={point.id}
-                    value={point.id}>
-                    coordinate x: {point.x} y: {point.y}
-                  </MenuItem>
-                ))
-              }
-            </TextField>
+    <PatchStyles classNames={classes}>
+      <div className="CreateCircleFormComponent">
+        <div className="InputContainer">
+          <div className="SelectCircle">
+            <div className="PointListSelect">
+              <TextField
+                className="CheckPointsForCenter"
+                label="Center"
+                value={draftCircle.pointId}
+                select
+                onChange={handleSelect}
+              >
+                {
+                  points.map((point) => (
+                    <MenuItem
+                      key={point.id}
+                      value={point.id}>
+                      coordinate x: {point.x} y: {point.y}
+                    </MenuItem>
+                  ))
+                }
+              </TextField>
+            </div>
+            <Input label="radius" name="radius" value={draftCircle.radius} onChange={handleItem} />
           </div>
-          <Input label="radius" name="radius" value={draftCircle.radius} onChange={handleItem} />
+        </div>
+        <div className="ActionsContainer">
+          <Link to="..">CANCEL</Link>
+          <Button
+            variant="outlined"
+            size="big"
+            onClick={() => handleSave()}
+            disabled={!draftCircle.pointId || !draftCircle.radius}
+          >
+            SAVE
+          </Button>
         </div>
       </div>
-      <div className="ActionsContainer">
-        <Link to="..">CANCEL</Link>
-        <Button
-          variant="outlined"
-          size="big"
-          onClick={() => handleSave()}
-          disabled={!draftCircle.pointId || !draftCircle.radius}
-        >
-          SAVE
-        </Button>
-      </div>
-    </div>
+    </PatchStyles>
   );
 };

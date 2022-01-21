@@ -1,14 +1,16 @@
 import { Header } from './header';
 
-import './page-shell.scss';
+import * as classes from './page-shell.modules.scss';
+import PatchStyles from 'patch-styles';
 
 export const Page = () => {
 
   return (
-    <div className="Page">
-      <Header />
-
-      {/*<PointPage showForm={showForm} hideForm={handleHideForm} />*/}
-    </div>
+    <PatchStyles classNames={classes}>
+      <div className="Page">
+        <Header />
+        {/*<PointPage showForm={showForm} hideForm={handleHideForm} />*/}
+      </div>
+    </PatchStyles>
   );
 };

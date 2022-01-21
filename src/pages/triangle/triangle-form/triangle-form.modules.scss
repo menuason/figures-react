@@ -1,0 +1,36 @@
+.CreateTriangleFormComponent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  grid-gap: 16px;
+  gap: 16px;
+  background-color: #C4C4C4;
+  padding: 8px 8px;
+
+  .ActionsButton {
+    display: flex;
+    gap: 24px;
+  }
+}
+.InputCheckBox{
+  display: flex;
+}
+.InputContainer{
+  display: flex;
+}
+.PointListSelect{
+  display: flex;
+  gap: 8px;
+}
+.CheckBoxColor{
+  color: #03f4a7;
+}
+.SelectTriangle{
+  display: flex;
+  gap: 8px;
+}
+.ActionsContainer{
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}

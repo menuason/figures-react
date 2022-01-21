@@ -1,6 +1,6 @@
 // variant: text(default), contained
 // size: big, normal(default), small
-import './button.scss';
+import './button.modules.scss';
 
 const variantClassNames = {
   text: 'Text',

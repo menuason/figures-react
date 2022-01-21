@@ -2,7 +2,6 @@ import { useSelector } from 'react-redux';
 import { Outlet } from 'react-router-dom';
 
 import { pointsSlice } from '../../../store/slices';
-import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
 import { PointList } from '../point-list';
 
 import './point-page.scss';
@@ -24,7 +23,7 @@ export const PointPage = () => {
         <PointList points={points} onDeletePoint={handleDeletePoint} />
 
         <div className="CanvasContainer">
-          <FiguresCanvas />
+        {/*  <FiguresCanvas />*/}
           <Outlet />
         </div>
       </div>

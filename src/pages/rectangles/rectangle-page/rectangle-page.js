@@ -1,29 +1,30 @@
 import { useSelector } from 'react-redux';
 import { rectanglesSlice } from '../../../store/slices';
 import { Breadcrumbs } from '../../../components/breadcrumbs';
-import { FiguresCanvas } from '../../../components/figurse-canvas/point-canvas';
 import { Outlet } from 'react-router-dom';
 
-import './rectangle-page.scss';
+import * as classes from './rectangle-page.modules.scss';
 import { RectangleList } from '../rectangle-list';
+import PatchStyles from 'patch-styles';
 
 export const RectanglePage = () => {
   const rectangles = useSelector(rectanglesSlice.selectors.selectAll);
 
   const handleDeleteRectangle = (selectedRectangle) => {
-    const newRectangles = rectangles.filter((rectangle) => rectangle.id !== selectedRectangle);
+    console.log(selectedRectangle);
+    const newRectangles = rectangles.filter((rectangle) => rectangle.id !== selectedRectangle.id);
     localStorage.setItem('rectangles', JSON.stringify(newRectangles));
   };
   return (
-    <>
+    <PatchStyles classNames={classes}>
       <Breadcrumbs label="Rectangle" path="/rectangles/create" />
       <div className="RectangleContent">
-        <RectangleList rectangles={rectangles} onDeleteCircle={handleDeleteRectangle} />
+        <RectangleList rectangles={rectangles} onDeleteRectangle={handleDeleteRectangle} />
         <div className="CanvasContainer">
-          <FiguresCanvas />
+          {/*<FiguresCanvas />*/}
           <Outlet />
         </div>
       </div>
-    </>
+    </PatchStyles>
   );
 };
