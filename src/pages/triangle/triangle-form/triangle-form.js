@@ -1,17 +1,58 @@
 import PatchStyles from 'patch-styles';
-import * as classes from './triangle-form.modules.scss';
 import { MenuItem, TextField } from '@mui/material';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/button';
 import { useDispatch, useSelector } from 'react-redux';
 import { pointsSlice, trianglesSlice } from '../../../store/slices';
 import { useState } from 'react';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles((theme) => ({
+  CreateTriangleFormComponent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gridGap: theme.spacing(2),
+    gap: theme.spacing(2),
+    backgroundColor: '#c4c4c4',
+    padding: '8px 8px',
+  },
+
+  ActionsButton: {
+    display: 'flex',
+    gap: theme.spacing(3),
+  },
+
+  InputCheckBox: {
+    display: 'flex',
+  },
+  InputContainer: {
+    display: 'flex',
+  },
+  PointListSelect: {
+    display: 'flex',
+    gap: theme.spacing(1),
+  },
+  CheckBoxColor: {
+    color: '#03f4a7',
+  },
+  SelectTriangle: {
+    display: 'flex',
+    gap: theme.spacing(1),
+  },
+  ActionsContainer: {
+    display: 'flex',
+    gap: theme.spacing(2),
+    alignItems: 'center',
+  },
+}));
 
 const DEFAULT_TRIANGLE_VALUE = {
   pointIds: [],
 };
 
 export const TriangleForm = () => {
+  const classes = useStyles();
   const points = useSelector(pointsSlice.selectors.selectAll);
   const [draftTriangle, setDraftTriangle] = useState(DEFAULT_TRIANGLE_VALUE);
   const dispatch = useDispatch();

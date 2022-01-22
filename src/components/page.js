@@ -1,9 +1,12 @@
 import { Header } from './header';
 
-import * as classes from './page-shell.modules.scss';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
+
+const  useStyles = makeStyles({})
 
 export const Page = () => {
+  const classes = useStyles();
 
   return (
     <PatchStyles classNames={classes}>

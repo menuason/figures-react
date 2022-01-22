@@ -1,6 +1,7 @@
 // variant: text(default), contained
 // size: big, normal(default), small
 import './button.modules.scss';
+import PatchStyles from 'patch-styles';
 
 const variantClassNames = {
   text: 'Text',
@@ -14,11 +15,15 @@ const sizeClassNames = {
   big: 'Big',
 };
 
+
 export const Button = ({ children, variant, size, ...buttonProps }) => {
+
+
   const variantClassName = variantClassNames[variant] ?? variantClassNames.text;
   const sizeClassName = sizeClassNames[size] ?? sizeClassNames.normal;
 
   return (
+    // <PatchStyles classNames={}>
     <button
       type="button"
       className={`Button ${variantClassName} ${sizeClassName}`}
@@ -26,6 +31,6 @@ export const Button = ({ children, variant, size, ...buttonProps }) => {
     >
       {children}
     </button>
+    // </PatchStyles>
   );
-
 };

@@ -1,24 +1,34 @@
-import { Component } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
 import { PageShell } from './components/page-shell';
 import { PointPage } from './pages/points/point-page';
 import { PointForm } from './pages/points/point-form';
 
-import './App.scss';
 import { CirclePage } from './pages/circles/circle-page';
 import { CircleForm } from './pages/circles/circle-form/circles-form';
 import { RectangleForm } from './pages/rectangles/rectangles-form';
 import { RectanglePage } from './pages/rectangles/rectangle-page';
 import { TrianglePage } from './pages/triangle/treangle-page';
 import { TriangleForm } from './pages/triangle/triangle-form/triangle-form';
+import { makeStyles } from '@mui/styles';
+import PatchStyles from 'patch-styles';
 
-export class App extends Component {
-  render() {
+const useStyles = makeStyles((theme) => ({
+  AppRoot: {
+    height: '100%',
+    backgroundColor: '#2b2a50',
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(2),
+  },
+}));
 
-    return (
+export const App = () => {
+  const classes = useStyles();
+
+  return (
+    <PatchStyles classNames={classes}>
       <div className="AppRoot">
-
         <Routes>
           <Route path="/" element={<PageShell />}>
             <Route path="points" element={<PointPage />}>
@@ -36,8 +46,8 @@ export class App extends Component {
           </Route>
         </Routes>
       </div>
-    );
-  }
-}
+    </PatchStyles>
+  );
+};
 
 export default App;

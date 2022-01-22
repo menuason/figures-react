@@ -4,10 +4,21 @@ import { Outlet } from 'react-router-dom';
 import { pointsSlice } from '../../../store/slices';
 import { PointList } from '../point-list';
 
-import './point-page.scss';
 import { Breadcrumbs } from '../../../components/breadcrumbs';
+import { makeStyles } from '@mui/styles';
+import PatchStyles from 'patch-styles';
+
+const useStyles = makeStyles((theme) => ({
+  CanvasContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: theme.spacing(2),
+    flex: 1,
+  },
+}));
 
 export const PointPage = () => {
+  const classes = useStyles();
   const points = useSelector(pointsSlice.selectors.selectAll);
 
   const handleDeletePoint = (selectedPoint) => {
@@ -17,17 +28,17 @@ export const PointPage = () => {
   };
 
   return (
-    <>
+    <PatchStyles classNames={classes}>
       <Breadcrumbs label="Point" path="/points/create" />
       <div className="PageContent">
         <PointList points={points} onDeletePoint={handleDeletePoint} />
 
         <div className="CanvasContainer">
-        {/*  <FiguresCanvas />*/}
+          {/*  <FiguresCanvas />*/}
           <Outlet />
         </div>
       </div>
-    </>
+    </PatchStyles>
   );
 };
 

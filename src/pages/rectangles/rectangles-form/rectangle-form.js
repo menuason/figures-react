@@ -2,17 +2,53 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { MenuItem, TextField } from '@mui/material';
 
-import * as classes from './rectangle-form.modules.scss';
 import { pointsSlice, rectanglesSlice } from '../../../store/slices';
 import { Link } from 'react-router-dom';
 import { Button } from '../../../components/button';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
 
 const DEFAULT_RECTANGLE_VALUE = {
   pointIds: [],
 };
 
+const useStyles = makeStyles( (theme) => ({
+  CreateRectangleFormComponent: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    gap: theme.spacing(2),
+    backgroundColor: '#c4c4c4',
+    padding: [theme.spacing(2), 0],
+  },
+  ActionsContainer: {
+    display: 'flex',
+    gap: theme.spacing(3),
+  },
+  InputCheckBox: {
+    display: 'flex',
+  },
+  InputContainer: {
+    display: 'flex',
+  },
+  PointListSelect: {
+    display: 'flex',
+    gap: theme.spacing(1),
+  },
+  CheckBoxColor: {
+    color: '#03f4a7',
+  },
+  SelectCircle: {
+    display: 'flex',
+    gap: theme.spacing(1),
+  },
+  CheckPointsForCenter: {
+    width: theme.spacing(20),
+  },
+}));
+
 export const RectangleForm = () => {
+  const classes = useStyles();
   const dispatch = useDispatch();
   const [draftRectangle, setDraftRectangle] = useState(DEFAULT_RECTANGLE_VALUE);
   const points = useSelector(pointsSlice.selectors.selectAll);

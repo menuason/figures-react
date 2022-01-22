@@ -1,10 +1,19 @@
-import * as classes from './nav-bar.modules.scss';
 import { Link } from 'react-router-dom';
 import PatchStyles from 'patch-styles';
+import { makeStyles } from '@mui/styles';
 
 export const NavBar = () => {
-  const arr = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+  const useStyles = makeStyles((theme) => ({
+    NavBarTexts: {
+      display: 'flex',
+      paddingRight: theme.spacing(2),
+      gap: theme.spacing(1),
+      textDecoration: 'none',
+    },
+  }));
 
+  const arr = ['Points', 'Circles', 'Rectangles', 'Triangles'];
+  const classes = useStyles();
   return (
     <PatchStyles classNames={classes}>
       <div className="NavBarTexts">

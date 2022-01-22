@@ -1,8 +1,18 @@
 import { RectangleListItem } from './rectange-list-item';
 import PatchStyles from 'patch-styles';
-import * as classes from './rectangle-list.modules.scss';
+import { makeStyles } from '@mui/styles';
+
+const useStyles = makeStyles( (theme) => ({
+  RectangleList: {
+    flexDirection: 'column',
+    display: 'flex',
+    color: '#d0cfd5',
+    gap: theme.spacing(2),
+  },
+}));
 
 export const RectangleList = ({ rectangles, onDeleteRectangle }) => {
+  const classes = useStyles();
   return (
     <PatchStyles classNames={classes}>
       <div className="RectangleList">

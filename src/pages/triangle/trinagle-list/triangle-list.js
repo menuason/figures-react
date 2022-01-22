@@ -1,10 +1,20 @@
 import PatchStyles from 'patch-styles';
-import * as classes from './triangle-list.modules.scss';
 import { TriangleListItem } from './triangle-list-item';
 import { useSelector } from 'react-redux';
 import { trianglesSlice } from '../../../store/slices';
+import { makeStyles } from '@mui/styles';
+
+const useStates = makeStyles((theme) => ({
+  TriangleList: {
+    flexDirection: 'column',
+    display: 'flex',
+    color: '#d0cfd5',
+    gap: theme.spacing(2),
+  },
+}));
 
 export const TriangleList = () => {
+  const classes = useStates();
   const triangles = useSelector(trianglesSlice.selectors.selectAll);
 
   const handleDeleteTriangle = (selectedTriangle) => {
