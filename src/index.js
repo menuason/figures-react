@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { Provider } from 'react-redux';
 import { store } from './store';
-import { BrowserRouter } from 'react-router-dom';
+import { MemoryRouter } from 'react-router-dom';
 import { GeneralMuiConfig } from './main-provaider/general-mui-config';
 
 
@@ -13,9 +13,9 @@ ReactDOM.render(
   <React.StrictMode>
     <GeneralMuiConfig>
       <Provider store={store}>
-        <BrowserRouter>
+        <MemoryRouter>
           <App />
-        </BrowserRouter>
+        </MemoryRouter>
       </Provider>
     </GeneralMuiConfig>
   </React.StrictMode>,
