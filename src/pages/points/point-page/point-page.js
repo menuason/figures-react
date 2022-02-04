@@ -9,6 +9,13 @@ import { makeStyles } from '@mui/styles';
 import PatchStyles from 'patch-styles';
 
 const useStyles = makeStyles((theme) => ({
+  PageContent: {
+    flex: 1,
+    display: 'flex',
+    gap: theme.spacing(2),
+    padding: theme.spacing(1),
+    justifyContent: 'space-between',
+  },
   CanvasContainer: {
     display: 'flex',
     flexDirection: 'column',

@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
     gridGap: theme.spacing(2),
     gap: theme.spacing(2),
     backgroundColor: '#c4c4c4',
-    padding: '8px 8px',
+    padding: [theme.spacing(1), theme.spacing(1)],
   },
 
   ActionsButton: {
@@ -28,6 +28,7 @@ const useStyles = makeStyles((theme) => ({
   },
   InputContainer: {
     display: 'flex',
+    gap: theme.spacing(1),
   },
   PointListSelect: {
     display: 'flex',
@@ -110,6 +111,7 @@ export const TriangleForm = () => {
             <Button
               variant="outlined"
               size="big"
+              disabled={draftTriangle.pointIds.length !== 3}
               onClick={() => handleSave()}
             >
               SAVE

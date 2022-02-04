@@ -14,14 +14,6 @@ const DEFAULT_POINT_VALUE = {
 };
 
 const useStyles = makeStyles((theme) => ({
-  PageContent: {
-    flex: 1,
-    display: 'flex',
-    gap: theme.spacing(2),
-    padding: theme.spacing(1),
-    justifyContent: 'space-between',
-  },
-
   CreatePointFormComponent: {
     display: 'flex',
     alignItems: 'center',
@@ -31,6 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
   InputContainer: {
     display: 'flex',
+    gap: theme.spacing(1),
   },
 
   ActionsContainer: {

@@ -8,9 +8,9 @@ const useStyles = makeStyles((theme) => ({
     color: '#03f4a7',
     display: 'flex',
     flexDirection: 'column',
-    height: theme.spacing(5),
-    width: theme.spacing(16),
-    padding: [0,theme.spacing(1), theme.spacing(0,5), theme.spacing(2)],
+    height: theme.spacing(6),
+    width: theme.spacing(17),
+    padding: [theme.spacing(0.5), theme.spacing(1), theme.spacing(0.5), theme.spacing(1)],
   },
   Axis: {
     background: '#2b2a50',

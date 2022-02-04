@@ -34,6 +34,7 @@ const useStyles = makeStyles((theme) => ({
   },
   InputContainer: {
     display: 'flex',
+    gap: theme.spacing(1),
   },
   PointListSelect: {
     display: 'flex',

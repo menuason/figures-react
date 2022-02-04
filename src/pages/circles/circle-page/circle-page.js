@@ -8,9 +8,11 @@ import { makeStyles } from '@mui/styles';
 
 const useStyles = makeStyles((theme) => ({
   CircleContent: {
+    flex: 1,
     display: 'flex',
     gap: theme.spacing(2),
     padding: theme.spacing(1),
+    justifyContent: 'space-between',
   },
 
   CanvasContainer: {
@@ -20,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
   },
 }));
+
 export const CirclePage = () => {
   const classes = useStyles();
   const circles = useSelector(circlesSlice.selectors.selectAll);

@@ -8,7 +8,7 @@ import { makeStyles } from '@mui/styles';
 const useStyles = makeStyles( (theme) => ({
   CircleListItem: {
     background: '#252049',
-    minWidth: theme.spacing(320),
+    minWidth: theme.spacing(40),
     borderRadius: theme.spacing(1),
     padding: theme.spacing(2),
     display: 'flex',

@@ -12,7 +12,7 @@ const DEFAULT_RECTANGLE_VALUE = {
   pointIds: [],
 };
 
-const useStyles = makeStyles( (theme) => ({
+const useStyles = makeStyles((theme) => ({
   CreateRectangleFormComponent: {
     display: 'flex',
     alignItems: 'center',
@@ -30,6 +30,7 @@ const useStyles = makeStyles( (theme) => ({
   },
   InputContainer: {
     display: 'flex',
+    gap: theme.spacing(1),
   },
   PointListSelect: {
     display: 'flex',
@@ -103,6 +104,7 @@ export const RectangleForm = () => {
           <Button
             variant="outlined"
             size="big"
+            disabed = {draftRectangle.pointIds.length !== 4}
             onClick={() => handleSave()}
           >
             SAVE
